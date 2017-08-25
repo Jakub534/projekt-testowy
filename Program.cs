@@ -11,7 +11,7 @@ namespace NoIdditiesHere
         static void Main(string[] args)
         {
             int[] array = { 1, 2, 3, 4, 5 };
-            NoOdds(array);
+            array = NoOdds(array);
             foreach(int x in array)
             {
                 Console.WriteLine(x);
@@ -22,17 +22,16 @@ namespace NoIdditiesHere
         //Write a function will return an array of non-odd values
         public static int[] NoOdds(int[] values)
         {
-           //the simplest way 1) Create a new array
-            int[] newOne = new int[values.Length];
-            for(int i = 0;i<values.Length;i++)
+            List<int> valuesList = new List<int>(values);
+            for (int i = valuesList.Count - 1; i >= 0;i-- )
             {
-                if(!(values[i] % 2==0 ))
+                if(valuesList[i]% 2 == 1)
                 {
-                    newOne[i] = values[i];
+                    valuesList.RemoveAt(i);
                 }
-
             }
-            return newOne;
+            values = valuesList.ToArray();
+            return values;
         }
     }
 }
