@@ -19,19 +19,23 @@ namespace NoIdditiesHere
             Console.ReadKey();
         }
 
-        //Write a function will return an array of non-odd values
-        public static int[] NoOdds(int[] values)
-        {
-            List<int> valuesList = new List<int>(values);
-            for (int i = valuesList.Count - 1; i >= 0;i-- )
-            {
-                if(valuesList[i]% 2 == 1)
-                {
-                    valuesList.RemoveAt(i);
-                }
-            }
-            values = valuesList.ToArray();
-            return values;
-        }
+        public static int[] NoOdds(int[] values) 
+    {
+       List<int> valuesList = new List<int>(values);
+       for (int i = valuesList.Count - 1; i >= 0;i-- )
+       {
+          if(valuesList[i]% 2 == 1)
+          {
+             valuesList.RemoveAt(i);
+          }
+          else if(valuesList[i] < 0)
+          {
+            if(valuesList[i] % 2 == 0) continue;
+            valuesList.RemoveAt(i);
+          }
+       }
+       values = valuesList.ToArray();
+       return values;
+    }
     }
 }
